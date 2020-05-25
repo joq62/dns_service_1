@@ -1,0 +1,2 @@
+%% encoding: UTF-8
+{modules,[dns_service,dns_service_app,dns_service_sup]}.

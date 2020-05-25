@@ -51,11 +51,13 @@ stop()-> gen_server:call(?MODULE, {stop},infinity).
 
 
 %%--------------------- Server call ------------------------------------
+
 ping()-> 
     gen_server:call(?MODULE, {ping},infinity).
 
 get(ServiceId)->
     gen_server:call(?MODULE, {get,ServiceId},infinity).
+
 all()->
     gen_server:call(?MODULE, {all},infinity).
     
