@@ -1,8 +1,7 @@
 all:
 	rm -rf *~ */*~ */*/*~;
-	rm -rf */*/*/*.beam;
-	rm -rf */*/*.beam;
-	rm -rf erl_crash.dump */erl_crash.dump */*/erl_crash.dump
+	rm -rf */*.beam;
+	rm -rf *.beam erl_crash.dump */erl_crash.dump */*/erl_crash.dump
 doc_gen:
 	rm -rf doc/*;
 	erlc ../doc_gen.erl;
@@ -12,4 +11,4 @@ test:
 	cp src/*app ebin;
 	erlc -I ../include -o ebin src/*.erl;
 	erlc -I ../include -o test_ebin test_src/*.erl;
-	erl -pa ebin -pa test_ebin -s dns_service_tests test -sname dns_test
+	erl -pa ebin -pa test_ebin -s dns_service_tests start -sname dns_test

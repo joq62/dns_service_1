@@ -10,22 +10,26 @@
 <hr>
 
 <h1>Module dns_service</h1>
-<ul class="index"><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>dns_service for infrastructur used joqhome system.
 
 <p><b>Behaviours:</b> <a href="gen_server.html"><tt>gen_server</tt></a>.</p>
+<p><b>Authors:</b> : Joq Erlang.</p>
 
+<h2><a name="description">Description</a></h2><p>dns_service for infrastructur used joqhome system</p>
+  
+   -------------------------------------------------------------------
 <h2><a name="index">Function Index</a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add-3">add/3</a></td><td></td></tr>
-<tr><td valign="top"><a href="#all-0">all/0</a></td><td></td></tr>
-<tr><td valign="top"><a href="#clear-0">clear/0</a></td><td></td></tr>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add-3">add/3</a></td><td>add(ServiceId,IpAddr,Port) register a service.</td></tr>
+<tr><td valign="top"><a href="#all-0">all/0</a></td><td>all() returns a list of all registered services.</td></tr>
+<tr><td valign="top"><a href="#clear-0">clear/0</a></td><td>clear() clears the dns register.</td></tr>
 <tr><td valign="top"><a href="#code_change-3">code_change/3</a></td><td></td></tr>
-<tr><td valign="top"><a href="#delete-3">delete/3</a></td><td></td></tr>
-<tr><td valign="top"><a href="#get-1">get/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete-3">delete/3</a></td><td>delete(ServiceId,IpAddr,Port) remove service from dns register.</td></tr>
+<tr><td valign="top"><a href="#get-1">get/1</a></td><td>get(ServiceId) returns [{IpAddr,Port}]|[].</td></tr>
 <tr><td valign="top"><a href="#handle_call-3">handle_call/3</a></td><td></td></tr>
 <tr><td valign="top"><a href="#handle_cast-2">handle_cast/2</a></td><td></td></tr>
 <tr><td valign="top"><a href="#handle_info-2">handle_info/2</a></td><td></td></tr>
 <tr><td valign="top"><a href="#init-1">init/1</a></td><td></td></tr>
-<tr><td valign="top"><a href="#ping-0">ping/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ping-0">ping/0</a></td><td>ping used for check if service is available.</td></tr>
 <tr><td valign="top"><a href="#start-0">start/0</a></td><td></td></tr>
 <tr><td valign="top"><a href="#stop-0">stop/0</a></td><td></td></tr>
 <tr><td valign="top"><a href="#terminate-2">terminate/2</a></td><td></td></tr>
@@ -35,18 +39,18 @@
 
 <h3 class="function"><a name="add-3">add/3</a></h3>
 <div class="spec">
-<p><tt>add(ServiceId, IpAddr, Port) -&gt; any()</tt></p>
-</div>
+<p><tt>add(ServiceId::string(), IpAddr::string(), Port::integer()) -&gt; any</tt><br></p>
+</div><p>add(ServiceId,IpAddr,Port) register a service</p>
 
 <h3 class="function"><a name="all-0">all/0</a></h3>
 <div class="spec">
-<p><tt>all() -&gt; any()</tt></p>
-</div>
+<p><tt>all() -&gt; [{IpAddr::string(), Port::integer()}] | []</tt><br></p>
+</div><p>all() returns a list of all registered services</p>
 
 <h3 class="function"><a name="clear-0">clear/0</a></h3>
 <div class="spec">
-<p><tt>clear() -&gt; any()</tt></p>
-</div>
+<p><tt>clear() -&gt; any</tt><br></p>
+</div><p>clear() clears the dns register</p>
 
 <h3 class="function"><a name="code_change-3">code_change/3</a></h3>
 <div class="spec">
@@ -55,13 +59,13 @@
 
 <h3 class="function"><a name="delete-3">delete/3</a></h3>
 <div class="spec">
-<p><tt>delete(ServiceId, IpAddr, Port) -&gt; any()</tt></p>
-</div>
+<p><tt>delete(ServiceId::string(), IpAddr::string(), Port::integer()) -&gt; any</tt><br></p>
+</div><p>delete(ServiceId,IpAddr,Port) remove service from dns register</p>
 
 <h3 class="function"><a name="get-1">get/1</a></h3>
 <div class="spec">
-<p><tt>get(ServiceId) -&gt; any()</tt></p>
-</div>
+<p><tt>get(ServiceId::string()) -&gt; [{IpAddr::string(), Port::integer()}] | []</tt><br></p>
+</div><p>get(ServiceId) returns [{IpAddr,Port}]|[]</p>
 
 <h3 class="function"><a name="handle_call-3">handle_call/3</a></h3>
 <div class="spec">
@@ -85,8 +89,8 @@
 
 <h3 class="function"><a name="ping-0">ping/0</a></h3>
 <div class="spec">
-<p><tt>ping() -&gt; any()</tt></p>
-</div>
+<p><tt>ping() -&gt; {pong, node(), module()} | {error, Err::string()}</tt><br></p>
+</div><p>ping used for check if service is available</p>
 
 <h3 class="function"><a name="start-0">start/0</a></h3>
 <div class="spec">

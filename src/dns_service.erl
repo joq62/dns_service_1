@@ -1,7 +1,7 @@
 %%% -------------------------------------------------------------------
-%%% Author  : Joq Erlang
-%%%  
-%%% Created : 10 dec 2012
+%%% @author : Joq Erlang
+%%% @doc dns_service for infrastructur used joqhome system 
+%%% 
 %%% -------------------------------------------------------------------
 -module(dns_service). 
 
@@ -51,23 +51,43 @@ stop()-> gen_server:call(?MODULE, {stop},infinity).
 
 
 %%--------------------- Server call ------------------------------------
+%% --------------------------------------------------------------------
+%% Function: terminate/2
+%% Description: Shutdown the server
+%% Returns: any (ignored by gen_server)
+%% --------------------------------------------------------------------
 
+%% @doc ping used for check if service is available
+-spec(ping()->{pong,node(),module()}|{error,Err::string()}).
 ping()-> 
     gen_server:call(?MODULE, {ping},infinity).
 
+%% @doc get(ServiceId) returns [{IpAddr,Port}]|[]
+-spec(get(ServiceId::string())-> [{IpAddr::string(),Port::integer()}]|[]).
 get(ServiceId)->
     gen_server:call(?MODULE, {get,ServiceId},infinity).
 
+%% @doc all() returns a list of all registered services
+-spec(all()-> [{IpAddr::string(),Port::integer()}]|[]).
 all()->
     gen_server:call(?MODULE, {all},infinity).
     
 
 %%----------------------Server cast --------------------------------------
+
+%% @doc add(ServiceId,IpAddr,Port) register a service
+-spec(add(ServiceId::string(),IpAddr::string(),Port::integer())-> any).
+
 add(ServiceId,IpAddr,Port)->
     gen_server:cast(?MODULE,{add,ServiceId,IpAddr,Port}).  
 
+%% @doc delete(ServiceId,IpAddr,Port) remove service from dns register
+-spec(delete(ServiceId::string(),IpAddr::string(),Port::integer())-> any).
 delete(ServiceId,IpAddr,Port)->
     gen_server:cast(?MODULE,{delete,ServiceId,IpAddr,Port}).
+
+%% @doc clear() clears the dns register
+-spec(clear()-> any).
 clear()->
     gen_server:cast(?MODULE,{clear}).  
 %% ====================================================================
